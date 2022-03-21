@@ -54,9 +54,7 @@ mpirun python -u /workspace/nvidia-examples/cnn/resnet.py --batch_size 256
 
 ---
 
-## Training with COCO dataset
-
-**DRAFT: Still in progress**
+## DRAFT: Still in Progress: Training with COCO dataset
 
 ### Environments
 
