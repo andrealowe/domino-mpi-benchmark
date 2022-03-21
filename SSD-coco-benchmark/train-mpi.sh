@@ -15,7 +15,7 @@
 
 CKPT_DIR=${1:-"/mnt/SSD/results/multi-gpu"}
 PIPELINE_CONFIG_PATH=${2:-"/mnt/SSD/configs"}"/ssd320_bench.config"
-GPUS=3
+GPUS=4
 
 TENSOR_OPS=0
 export TF_ENABLE_CUBLAS_TENSOR_OP_MATH_FP32=${TENSOR_OPS}
