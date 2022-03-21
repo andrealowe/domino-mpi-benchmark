@@ -200,8 +200,8 @@ ENV PYTHONPATH="/mnt/SSD/models/research/:/mnt/SSD/models/research/slim/:/mnt/SS
 
 1. Create a project with the name "mpi-ml-benchmark".
 2. Start a workspace
-3. Git clone or otherwise copy the benchmark repo to your workpace/project.
-   * [mpi-benchmark/](https://github.com/andrealowe/domino-mpi-benchmark/tree/main/SSD-coco-benchmark)
+3. Git clone or otherwise copy the contents of the [domino-mpi-benchmark/SSD-coco-benchmark folder](https://github.com/andrealowe/domino-mpi-   benchmark/tree/main/SSD-coco-benchmark)
+   to ```/mnt```.
 4. Copy the test data to the project's default dataset directory
    ```
    aws s3 cp s3://mpi-test-coco-data /domino/datasets/local/mpi-ml-benchmark --region us-west-2 --recursive --no-sign-request
