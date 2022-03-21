@@ -45,8 +45,8 @@ Tests are adapted from the [NVIDIA product performance tests](https://developer.
 ```
 mpirun python -u /workspace/nvidia-examples/cnn/resnet.py --batch_size 256 
 --num_iter 500 --precision fp16 --iter_unit batch
-
 ```
+
 4. Use the throughput (images/sec) from the last epoch as the indicator of
   performance. A single (on-prem) T4 GPU was shown to process 429 images/sec.
   80% efficiency is desirable when looking at the cluster size (the num of
