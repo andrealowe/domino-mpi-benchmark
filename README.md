@@ -48,7 +48,7 @@ mpirun python -u /workspace/nvidia-examples/cnn/resnet.py --batch_size 256
 ```
 
 4. Use the throughput (images/sec) from the last epoch as the indicator of
-  performance. A single (on-prem) T4 GPU was shown to process 429 images/sec.
+  performance. A single AWS EC2 T4 GPU was shown to process 429 images/sec.
   80% efficiency is desirable when looking at the cluster size (the num of
   GPUs x the single GPU rate)
 
@@ -146,7 +146,7 @@ ENV PYTHONPATH="/mnt/SSD/models/research/:/mnt/SSD/models/research/slim/:/mnt/SS
    * [mpi-benchmark/](https://github.com/cerebrotech/qe-prototypes/blob/main/perf-workloads/on-demand-clusters/mpi-benchmark/)
 4. Copy the test data to the project's default dataset directory
    ```
-   aws s3 cp s3://mpi-test-coco /domino/datasets/local/mpi-ml-benchmark --recursive
+   aws s3 cp s3://mpi-test-coco-data /domino/datasets/local/mpi-ml-benchmark --recursive
    ```
 
 ### Running the benchmark script
