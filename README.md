@@ -32,7 +32,7 @@ Tests are adapted from the [NVIDIA product performance tests](https://developer.
 #### Compute Hardware
 
 - **Attach Compute Cluster**: MPI
-- **Number of Workers**: <various>
+- **Number of Workers**: Between 2-8
 - **Worker Hardware Tier**: GPU (small)
 - **Cluster Compute Environment**: _The above MPI cluster compute environment_
 
