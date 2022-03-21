@@ -217,3 +217,5 @@ ENV PYTHONPATH="/mnt/SSD/models/research/:/mnt/SSD/models/research/slim/:/mnt/SS
 ```
 
 To compare to a single GPU, execute the ```train.sh``` script.
+
+NVIDIA found an increase to 549 images/sec with 8xT4 GPUs from 98 images/sec for 1 T4 GPU. 
