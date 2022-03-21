@@ -54,6 +54,64 @@ mpirun python -u /workspace/nvidia-examples/cnn/resnet.py --batch_size 256
 
 ---
 
+## Horovod Benchmarks
+
+Test adapted from the [Horovod docs](https://horovod.readthedocs.io/en/stable/benchmarks_include.html)
+
+### Environments
+
+#### MPI client/workspace environment
+
+- Base Image URI : ```horovod/horovod```
+
+- Dockerfile Instructions
+**Ensure 'Automatically make compatible with Domino' is checked.**
+
+#### MPI cluster compute environment
+
+- Base Image URI : ```horovod/horovod```
+- Cluster Type: MPI
+
+### MPI workspace settings - DFS project
+
+#### Environment and Hardware
+
+- **Workspace Environment**: _The above MPI client/workspace environment_
+- **Workspace IDE**: JupyterLab
+- **Hardware Tier**: Small
+
+
+#### Compute Hardware
+
+- **Attach Compute Cluster**: MPI
+- **Number of Workers**: Between 2-8
+- **Worker Hardware Tier**: GPU (small)
+- **Cluster Compute Environment**: _The above MPI cluster compute environment_
+
+### Steps to set up the project, workspace, and test data
+
+1. Create a project with the name "horovod-benchmark".
+2. Start a workspace with the above configuration.
+3. Execute the following code:
+
+```
+git clone https://github.com/tensorflow/benchmarks
+cd benchmarks
+
+mpirun \
+    -bind-to none -map-by slot \
+    -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH -x PATH \
+    -mca pml ob1 -mca btl ^openib \
+    python scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py \
+        --model resnet101 \
+        --batch_size 64 \
+        --variable_update horovod
+```
+
+4. At the end of the run you will see the number of images processed per second. 
+
+---
+
 ## Training with COCO dataset
 
 ### Environments
