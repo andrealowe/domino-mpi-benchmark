@@ -143,10 +143,10 @@ ENV PYTHONPATH="/mnt/SSD/models/research/:/mnt/SSD/models/research/slim/:/mnt/SS
 1. Create a project with the name "mpi-ml-benchmark".
 2. Start a workspace with the above configuration.
 3. Git clone or otherwise copy the benchmark repo to your workpace/project.
-   * [mpi-benchmark/](https://github.com/cerebrotech/qe-prototypes/blob/main/perf-workloads/on-demand-clusters/mpi-benchmark/)
+   * [mpi-benchmark/]()
 4. Copy the test data to the project's default dataset directory
    ```
-   aws s3 cp s3://mpi-test-coco-data /domino/datasets/local/mpi-ml-benchmark --recursive
+   aws s3 cp s3://mpi-test-coco-data /domino/datasets/local/mpi-ml-benchmark --region us-west-2 --recursive --no-sign-request
    ```
 
 ### Running the benchmark script
