@@ -141,7 +141,7 @@ ENV PYTHONPATH="/mnt/SSD/models/research/:/mnt/SSD/models/research/slim/:/mnt/SS
 ### Steps to set up the project, workspace, and test data
 
 1. Create a project with the name "mpi-ml-benchmark".
-2. Start a workspace with the above configuration.
+2. Start a workspace
 3. Git clone or otherwise copy the benchmark repo to your workpace/project.
    * [mpi-benchmark/](https://github.com/andrealowe/domino-mpi-benchmark/tree/main/SSD-coco-benchmark)
 4. Copy the test data to the project's default dataset directory
@@ -151,10 +151,11 @@ ENV PYTHONPATH="/mnt/SSD/models/research/:/mnt/SSD/models/research/slim/:/mnt/SS
 
 ### Running the benchmark script
 
-Execute the mpi-train.sh script:
+1. Start a workspace with the above configuration.
+2. Execute the mpi-train.sh script:
 
 ```
-/.train-mpi.sh
+/.mpi-train.sh
 ```
 
-To compare to a single GPU, execute the train.sh script.
+To compare to a single GPU, execute the ```train.sh``` script.
