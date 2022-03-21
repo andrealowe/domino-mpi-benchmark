@@ -13,7 +13,7 @@ Tests are adapted from the [NVIDIA product performance tests](https://developer.
 - Base Image URI : ```nvcr.io/nvidia/tensorflow:22.02-tf2-py3```
 
 - Dockerfile Instructions
-**Ensure 'Automatically make compatible with Domino' is checked**
+**Ensure 'Automatically make compatible with Domino' is checked.**
 
 #### MPI cluster compute environment
 
@@ -54,7 +54,7 @@ mpirun python -u /workspace/nvidia-examples/cnn/resnet.py --batch_size 256
 
 ---
 
-## DRAFT: Still in Progress: Training with COCO dataset
+## Training with COCO dataset
 
 ### Environments
 
@@ -63,7 +63,7 @@ mpirun python -u /workspace/nvidia-examples/cnn/resnet.py --batch_size 256
 - Base Image URI : ```nvcr.io/nvidia/tensorflow:22.02-tf1-py3```
 
 - Dockerfile Instructions
-**Ensure 'Automatically make compatible with Domino' is checked**
+**Ensure 'Automatically make compatible with Domino' is checked.**
  Then add the following:
 ```
 RUN git clone https://github.com/NVIDIA/DeepLearningExamples
@@ -143,7 +143,7 @@ ENV PYTHONPATH="/mnt/SSD/models/research/:/mnt/SSD/models/research/slim/:/mnt/SS
 1. Create a project with the name "mpi-ml-benchmark".
 2. Start a workspace with the above configuration.
 3. Git clone or otherwise copy the benchmark repo to your workpace/project.
-   * [mpi-benchmark/]()
+   * [mpi-benchmark/](https://github.com/andrealowe/domino-mpi-benchmark/tree/main/SSD-coco-benchmark)
 4. Copy the test data to the project's default dataset directory
    ```
    aws s3 cp s3://mpi-test-coco-data /domino/datasets/local/mpi-ml-benchmark --region us-west-2 --recursive --no-sign-request
