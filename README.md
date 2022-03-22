@@ -219,7 +219,9 @@ ENV PYTHONPATH="/mnt/SSD/models/research/:/mnt/SSD/models/research/slim/:/mnt/SS
 
 If you would prefer to run the script as a job, use in the Job command line:
 
-```-wdir /mnt/SSD/models/research -bind-to none -map-by slot python -u ./object_detection/model_main.py  --pipeline_config_path="/mnt/SSD/configs/ssd320_bench.config"  --model_dir="/mnt/SSD/results/multi-gpu"  --amp | tee /mnt/SSD/results/multi-gpu/train_log```
+```
+-wdir /mnt/SSD/models/research -bind-to none -map-by slot python -u ./object_detection/model_main.py  --pipeline_config_path="/mnt/SSD/configs/ssd320_bench.config"  --model_dir="/mnt/SSD/results/multi-gpu"  --amp | tee /mnt/SSD/results/multi-gpu/train_log
+```
                
 The images/sec will be output when the training is finished, and is also found in the train.log under SSD > Results > multi-gpu. This log will also show any errors and other details of the run. 
 
