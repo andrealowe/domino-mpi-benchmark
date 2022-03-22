@@ -212,7 +212,7 @@ ENV PYTHONPATH="/mnt/SSD/models/research/:/mnt/SSD/models/research/slim/:/mnt/SS
 
 1. Start a workspace with the above configuration.
 2. Execute the mpi-train.sh script (note, you may need to change file permissions). If you would prefer to run the script as a job, use
-   ```/bin/bash mpi-train.sh```
+   ```/bin/bash mpi-train.sh```. Note - this has only been tested in a workspace, currently determining if it will work in a job. 
 
 ```
 /.mpi-train.sh
