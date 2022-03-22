@@ -211,7 +211,8 @@ ENV PYTHONPATH="/mnt/SSD/models/research/:/mnt/SSD/models/research/slim/:/mnt/SS
 ### Running the benchmark script
 
 1. Start a workspace with the above configuration.
-2. Execute the mpi-train.sh script (note, you may need to change file permissions):
+2. Execute the mpi-train.sh script (note, you may need to change file permissions). If you would prefer to run the script as a job, use
+   ```/bin/bash mpi-train.sh```
 
 ```
 /.mpi-train.sh
