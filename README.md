@@ -211,13 +211,14 @@ ENV PYTHONPATH="/mnt/SSD/models/research/:/mnt/SSD/models/research/slim/:/mnt/SS
 ### Running the benchmark script
 
 1. Start a workspace with the above configuration.
-2. Execute the mpi-train.sh script (note, you may need to change file permissions). If you would prefer to run the script as a job, use
-   ```/bin/bash mpi-train.sh```. Note - this has only been tested in a workspace, currently determining if it will work in a job. 
+2. Execute the mpi-train.sh script (note, you may need to change file permissions). 
 
 ```
 /.mpi-train.sh
 ```
-
+If you would prefer to run the script as a job, use in the Job command line:
+```-wdir /mnt/SSD/models/research -bind-to none -map-by slot python -u ./object_detection/model_main.py  --pipeline_config_path="/mnt/SSD/configs/ssd320_bench.config"  --model_dir="/mnt/SSD/results/multi-gpu"  --amp | tee /mnt/SSD/results/multi-gpu/train_log```
+               
 The images/sec will be output when the training is finished, and is also found in the train.log under SSD > Results > multi-gpu. This log will also show any errors and other details of the run. 
 
 To compare to a single GPU, execute the ```train.sh``` script.
