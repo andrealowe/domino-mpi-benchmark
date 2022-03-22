@@ -218,6 +218,8 @@ ENV PYTHONPATH="/mnt/SSD/models/research/:/mnt/SSD/models/research/slim/:/mnt/SS
 /.mpi-train.sh
 ```
 
+The images/sec will be output when the training is finished, and is also found in the train.log under SSD > Results > multi-gpu. This log will also show any errors and other details of the run. 
+
 To compare to a single GPU, execute the ```train.sh``` script.
 
-NVIDIA found an increase to 549 images/sec with 8xT4 GPUs from 98 images/sec for 1 T4 GPU. 
+NVIDIA found an increase to 549 images/sec with 8xT4 GPUs from 98 images/sec for 1 T4 GPU (for on-prem GPUs). 
