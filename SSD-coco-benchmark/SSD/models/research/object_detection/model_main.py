@@ -44,6 +44,8 @@ from object_detection import model_hparams
 from object_detection import model_lib
 from object_detection.utils.exp_utils import AverageMeter, setup_dllogger
 
+tf.logging.set_verbosity(tf.logging.ERROR)
+
 flags.DEFINE_string(
     'model_dir', None, 'Path to output model directory '
     'where event and checkpoint files will be written.')
