@@ -230,10 +230,10 @@ In a workspace use the workspace-mpi-train script:
 
 The results can be found in the train.log under SSD-coco-benchmark > Results > multi-gpu. This log will also show any errors and other details of the run.
 
-To calculate the NVIDIA benchmark, run the benchmark script and specify the number of GPUs in the cluster after training has completed, with a small hardware tier and any environment: ```benchmark.sh <num_GPUs>```. If the number of GPUs isn't specified, it will default to 4.
+To calculate the NVIDIA benchmark, run the benchmark script and specify the number of GPUs in the cluster after training has completed, with a small hardware tier and any environment: ```benchmark.sh <num_GPUs> <location of train_log>```. If the number of GPUs isn't specified, it will default to 4. The location of the train_log will default to /mnt/SSD-results/multi-GPU/train_log if not specified. 
 
 This will calculate the images/sec, print it in the console, and append it to the train_log file.
 
-To compare to a single GPU, execute the ```train.sh``` script followed by the ```benchmark-nocluster.sh``` script.
+To compare to a single GPU, execute the ```train.sh``` script followed by the ```benchmark-nocluster.sh <location of single-gpu/train_log>``` script. Note that the location of the train_log will default to /mnt/SSD-results/single-GPU/train_log if not specified. 
 
 NVIDIA found an increase to 549 images/sec with 8xT4 GPUs from 98 images/sec for 1 T4 GPU (for on-prem GPUs) using MPI for multi-GPU training. Multi-node training is excepted to perform with ~50-80% efficiency.
