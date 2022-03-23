@@ -205,8 +205,8 @@ ENV PYTHONPATH="/mnt/SSD/models/research/:/mnt/SSD/models/research/slim/:/mnt/SS
    aws s3 cp s3://mpi-test-coco-data /domino/datasets/local/mpi-ml-benchmark --region us-west-2 --recursive --no-sign-request
    ```
 4. Git clone or otherwise copy the contents of the
-   [domino-mpi-benchmark/SSD-coco-benchmark folder](https://github.com/andrealowe/domino-mpi-benchmark/tree/main/SSD-coco-benchmark)
-   to ```/mnt```.
+   [domino-mpi-benchmark](https://github.com/andrealowe/domino-mpi-benchmark/tree/main/SSD-coco-benchmark)
+   to ```/mnt```. **Important** You will have to move the files out of the '/domino-mpi-benchmark' folder and into /mnt folder. This is required for the mpi.conf file to work, as well as the paths in the training and benchmark scripts.
 
 ### Running the benchmark script
 
@@ -216,12 +216,12 @@ ENV PYTHONPATH="/mnt/SSD/models/research/:/mnt/SSD/models/research/slim/:/mnt/SS
 mpirun mpi-train.sh
 ```
 
-The results can be found in the train.log under SSD > Results > multi-gpu. This log will also show any errors and other details of the run.
+The results can be found in the train.log under SSD-coco-benchmark > Results > multi-gpu. This log will also show any errors and other details of the run.
 
-To calculate the NVIDIA benchmark, run the benchmark script after training has completed, with a small hardware tier and any environment: ```benchmark.sh```.
+To calculate the NVIDIA benchmark, run the benchmark script and specify the number of GPUs in the cluster after training has completed, with a small hardware tier and any environment: ```benchmark.sh <num_GPUs>```. If the number of GPUs isn't specified, it will default to 4.
 
 This will calculate the images/sec, print it in the console, and append it to the train_log file.
 
 To compare to a single GPU, execute the ```train.sh``` script followed by the ```benchmark-nocluster.sh``` script.
 
-NVIDIA found an increase to 549 images/sec with 8xT4 GPUs from 98 images/sec for 1 T4 GPU (for on-prem GPUs) using MPI for multi-GPU training. Multi-node training is excepted to perform with ~50-80% efficiency. 
+NVIDIA found an increase to 549 images/sec with 8xT4 GPUs from 98 images/sec for 1 T4 GPU (for on-prem GPUs) using MPI for multi-GPU training. Multi-node training is excepted to perform with ~50-80% efficiency.
