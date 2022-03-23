@@ -211,9 +211,9 @@ ENV PYTHONPATH="/mnt/SSD/models/research/:/mnt/SSD/models/research/slim/:/mnt/SS
 ### Running the benchmark script
 
 1. Start a Workspace or Job with the above configuration.
-2. Execute the mpi-train.sh script (note, you may need to change file permissions). The Job will automatically add the ```mpirun``` command, so just pass the name of the script. In a workspace use:
+2. Execute the mpi-train.sh script (note, you may need to change file permissions). The Job will automatically add the ```mpirun``` command, so just pass the name of the script. In a workspace use the workspace-mpi-train script:
 ```
-mpirun mpi-train.sh
+./workspace-mpi-train.sh
 ```
 
 The results can be found in the train.log under SSD-coco-benchmark > Results > multi-gpu. This log will also show any errors and other details of the run.
