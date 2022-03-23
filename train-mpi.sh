@@ -14,10 +14,17 @@
 
 #edited for Domino
 
+CKPT_DIR=${1:-"/mnt/SSD-results/multi-gpu"}
+PIPELINE_CONFIG_PATH=${2:-"/mnt/SSD/configs/ssd320_bench.config"}
+LOG_FILE=${3:-"train_log"}
+
+mkdir -p $CKPT_DIR
+
 pushd /mnt/SSD/models/research
 
 python -u ./object_detection/model_main.py \
-       --pipeline_config_path="/mnt/SSD/configs/ssd320_bench.config" \
-       --model_dir="/mnt/SSD-results/multi-gpu" \
+       --pipeline_config_path=${PIPELINE_CONFIG_PATH} \
+       --model_dir=${CKPT_DIR} \
+       --alsologtostder \
        --amp \
-       | tee /mnt/SSD-results/multi-gpu/train_log
+       "${@:3}" 2>&1 | tee $CKPT_DIR/$LOG_FILE

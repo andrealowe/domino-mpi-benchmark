@@ -14,10 +14,15 @@
 
 #edited for Domino
 
-mkdir -p /mnt/SSD-results/multi-gpu
+CKPT_DIR=${1:-"/mnt/SSD-results/multi-gpu"}
+PIPELINE_CONFIG_PATH=${2:-"/mnt/SSD/configs/ssd320_bench.config"}
+LOG_FILE=${3:-"train_log"}
 
-mpirun \
-    -wdir /mnt/SSD/models/research \
+mkdir -p $CKPT_DIR
+
+pushd /mnt/SSD/models/research
+
+mpirun --allow-run-as-root \
     -bind-to none \
     -map-by slot \
     -x NCCL_DEBUG=INFO \
@@ -26,7 +31,8 @@ mpirun \
     -mca pml ob1 \
     -mca btl ^openib \
     python -u ./object_detection/model_main.py \
-           --pipeline_config_path="/mnt/SSD/configs/ssd320_bench.config" \
-           --model_dir="/mnt/SSD-/multi-gpu" \
+           --pipeline_config_path=${PIPELINE_CONFIG_PATH} \
+           --model_dir=${CKPT_DIR} \
+           --alsologtostder \
            --amp \
-           | tee /mnt/SSD-results/multi-gpu/train_log
+           "${@:3}" 2>&1 | tee $CKPT_DIR/$LOG_FILE
