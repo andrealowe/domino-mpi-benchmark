@@ -15,7 +15,7 @@
 #edited for Domino
 
 mpirun \
-    -wdir /mnt/SSD-coco-benchmark/SSD/models/research \
+    -wdir /mnt/SSD/models/research \
     -bind-to none \
     -map-by slot \
     -x NCCL_DEBUG=INFO \
@@ -28,4 +28,3 @@ mpirun \
            --model_dir="/mnt/SSD-coco-benchmark/results/multi-gpu" \
            --amp \
            | tee /mnt/SSD-coco-benchmark/results/multi-gpu/train_log
-       

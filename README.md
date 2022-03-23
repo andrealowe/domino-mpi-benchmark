@@ -206,7 +206,12 @@ ENV PYTHONPATH="/mnt/SSD/models/research/:/mnt/SSD/models/research/slim/:/mnt/SS
    ```
 4. Git clone or otherwise copy the contents of the
    [domino-mpi-benchmark](https://github.com/andrealowe/domino-mpi-benchmark/tree/main/SSD-coco-benchmark)
-   to ```/mnt```. **Important** You will have to move the files out of the '/domino-mpi-benchmark' folder and into /mnt folder. This is required for the mpi.conf file to work, as well as the paths in the training and benchmark scripts.
+   to ```/mnt```.
+5. **Important** You will have to move the files out of the '/domino-mpi-    benchmark' folder and into /mnt folder. This is required for the mpi.conf file to work, as well as the paths in the training and benchmark scripts.
+```
+mv domino-mpi-benchmark/* /mnt
+rm -rf domino-mpi-benchmark
+```
 
 ### Running the benchmark script
 

@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-CKPT_DIR=${1:-"/mnt/SSD-coco-benchmark/SSD/results/single-gpu"}
-PIPELINE_CONFIG_PATH=${2:-"/mnt/SSD-coco-benchmark/SSD/configs"}"/ssd320_bench.config"
+CKPT_DIR=${1:-"/mnt/SSD-results/single-gpu"}
+PIPELINE_CONFIG_PATH=${2:-"/mnt/SSD/configs"}"/ssd320_bench.config"
 GPUS=1
 
 TENSOR_OPS=0

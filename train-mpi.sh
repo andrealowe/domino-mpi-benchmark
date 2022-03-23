@@ -15,7 +15,7 @@
 #edited for Domino
 
 python -u ./object_detection/model_main.py \
-       --pipeline_config_path="/mnt/SSD-coco-benchmark/SSD/configs/ssd320_bench.config" \
-       --model_dir="/mnt/SSD-coco-benchmark/results/multi-gpu" \
+       --pipeline_config_path="/mnt/SSD/configs/ssd320_bench.config" \
+       --model_dir="/mnt/SSD-results/multi-gpu" \
        --amp \
        | tee /mnt/SSD-coco-benchmark/results/multi-gpu/train_log
