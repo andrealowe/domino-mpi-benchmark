@@ -14,6 +14,8 @@
 
 #edited for Domino
 
+mkdir -p /mnt/SSD-results/multi-gpu
+
 mpirun \
     -wdir /mnt/SSD/models/research \
     -bind-to none \
@@ -24,7 +26,7 @@ mpirun \
     -mca pml ob1 \
     -mca btl ^openib \
     python -u ./object_detection/model_main.py \
-           --pipeline_config_path="/mnt/SSD-coco-benchmark/SSD/configs/ssd320_bench.config" \
-           --model_dir="/mnt/SSD-coco-benchmark/results/multi-gpu" \
+           --pipeline_config_path="/mnt/SSD/configs/ssd320_bench.config" \
+           --model_dir="/mnt/SSD-/multi-gpu" \
            --amp \
-           | tee /mnt/SSD-coco-benchmark/results/multi-gpu/train_log
+           | tee /mnt/SSD-results/multi-gpu/train_log
