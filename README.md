@@ -212,11 +212,18 @@ ENV PYTHONPATH="/mnt/SSD/models/research/:/mnt/SSD/models/research/slim/:/mnt/SS
 mv domino-mpi-benchmark/* /mnt
 rm -rf domino-mpi-benchmark
 ```
+6. Sync files to the project
 
 ### Running the benchmark script
 
 1. Start a Workspace or Job with the above configuration.
-2. Execute the mpi-train.sh script (note, you may need to change file permissions). The Job will automatically add the ```mpirun``` command, so just pass the name of the script. In a workspace use the workspace-mpi-train script:
+2. For Jobs, use the mpi-train.sh script. The Job will automatically add the ```mpirun``` command, so use the following:
+
+```
+/bin/bash train-mpi.sh
+```
+
+In a workspace use the workspace-mpi-train script:
 ```
 ./workspace-mpi-train.sh
 ```

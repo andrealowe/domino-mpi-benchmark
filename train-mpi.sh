@@ -14,6 +14,8 @@
 
 #edited for Domino
 
+pushd /mnt/SSD/models/research
+
 python -u ./object_detection/model_main.py \
        --pipeline_config_path="/mnt/SSD/configs/ssd320_bench.config" \
        --model_dir="/mnt/SSD-results/multi-gpu" \
