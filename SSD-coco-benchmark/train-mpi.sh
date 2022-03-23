@@ -13,11 +13,16 @@
 # limitations under the License.
 
 
-mpirun -wdir /mnt/SSD/models/research \
-       -bind-to none \
-       -map-by slot \
-        python -u ./object_detection/model_main.py \
-               --pipeline_config_path="/mnt/SSD/configs/ssd320_bench.config" \
-               --model_dir="/mnt/SSD/results/multi-gpu" \
-               --amp \
-               | tee /mnt/SSD/results/multi-gpu/train_log
+-wdir /mnt/SSD/models/research \
+-bind-to none \
+-map-by slot \
+-x NCCL_DEBUG=INFO \
+-x LD_LIBRARY_PATH \
+-x PATH \
+-mca pml ob1 \
+-mca btl ^openib \
+python -u ./object_detection/model_main.py \
+       --pipeline_config_path="/mnt/SSD-coco-benchmark/SSD/configs/ssd320_bench.config" \
+       --model_dir="/mnt/SSD-coco-benchmark/SSD/results/multi-gpu" \
+       --amp \
+       | tee /mnt/SSD/results/multi-gpu/train_log

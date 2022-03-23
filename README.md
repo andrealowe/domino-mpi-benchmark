@@ -43,7 +43,7 @@ Tests are adapted from the [NVIDIA product performance tests](https://developer.
 3. Execute the following code:
 
 ```
-mpirun python -u /workspace/nvidia-examples/cnn/resnet.py --batch_size 256 
+mpirun python -u /workspace/nvidia-examples/cnn/resnet.py --batch_size 256
 --num_iter 500 --precision fp16 --iter_unit batch
 ```
 
@@ -108,7 +108,7 @@ mpirun \
         --variable_update horovod
 ```
 
-4. At the end of the run you will see the number of images processed per second. 
+4. At the end of the run you will see the number of images processed per second.
 
 ---
 
@@ -204,27 +204,24 @@ ENV PYTHONPATH="/mnt/SSD/models/research/:/mnt/SSD/models/research/slim/:/mnt/SS
    ```
    aws s3 cp s3://mpi-test-coco-data /domino/datasets/local/mpi-ml-benchmark --region us-west-2 --recursive --no-sign-request
    ```
-4. Git clone or otherwise copy the contents of the 
+4. Git clone or otherwise copy the contents of the
    [domino-mpi-benchmark/SSD-coco-benchmark folder](https://github.com/andrealowe/domino-mpi-benchmark/tree/main/SSD-coco-benchmark)
    to ```/mnt```.
 
 ### Running the benchmark script
 
-1. Start a workspace with the above configuration.
-2. Execute the mpi-train.sh script (note, you may need to change file permissions). 
-
+1. Start a Workspace or Job with the above configuration.
+2. Execute the mpi-train.sh script (note, you may need to change file permissions). The Job will automatically add the ```mpirun``` command, so just pass the name of the script. In a workspace use:
 ```
-/.mpi-train.sh
+mpirun mpi-train.sh
 ```
 
-If you would prefer to run the script as a job, use in the Job command line:
+The results can be found in the train.log under SSD > Results > multi-gpu. This log will also show any errors and other details of the run.
 
-```
--wdir /mnt/SSD/models/research -bind-to none -map-by slot -x NCCL_DEBUG=INFO -x LD_LIBRARY_PATH-x PATH -mca pml ob1 -mca btl ^openib python -u ./object_detection/model_main.py  --pipeline_config_path="/mnt/SSD/configs/ssd320_bench.config"  --model_dir="/mnt/SSD/results/multi-gpu"  --amp | tee /mnt/SSD/results/multi-gpu/train_log
-```
-               
-The images/sec will be output when the training is finished, and is also found in the train.log under SSD > Results > multi-gpu. This log will also show any errors and other details of the run. 
+To calculate the NVIDIA benchmark, run the benchmark script after training has completed, with a small hardware tier and any environment: ```benchmark.sh```.
 
-To compare to a single GPU, execute the ```train.sh``` script.
+This will calculate the images/sec, print it in the console, and append it to the train_log file.
 
-NVIDIA found an increase to 549 images/sec with 8xT4 GPUs from 98 images/sec for 1 T4 GPU (for on-prem GPUs). 
+To compare to a single GPU, execute the ```train.sh``` script followed by the ```benchmark-nocluster.sh``` script.
+
+NVIDIA found an increase to 549 images/sec with 8xT4 GPUs from 98 images/sec for 1 T4 GPU (for on-prem GPUs) using MPI for multi-GPU training. Multi-node training is excepted to perform with ~50-80% efficiency. 
