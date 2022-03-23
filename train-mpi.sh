@@ -20,4 +20,4 @@ python -u ./object_detection/model_main.py \
        --pipeline_config_path="/mnt/SSD/configs/ssd320_bench.config" \
        --model_dir="/mnt/SSD-results/multi-gpu" \
        --amp \
-       | tee /mnt/SSD-coco-benchmark/results/multi-gpu/train_log
+       | tee /mnt/SSD-results/multi-gpu/train_log
